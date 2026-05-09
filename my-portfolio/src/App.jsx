@@ -4,12 +4,42 @@ const data = {
   name: "Jobayer Faisal Fahim",
   role: "Computer Science & Engineering Graduate",
   tagline: "Building intelligent systems that solve real-world problems.",
-  bio: "A motivated CSE graduate from East West University with a CGPA of 3.80, an IEEE-published paper, and a thesis on autonomous AI systems. I love building things that matter — from multi-agent flood response systems to smart IoT monitors.",
+  bio: "A motivated CSE graduate from East West University with a CGPA of 3.80, an IEEE-published paper, and a thesis on autonomous AI systems. I love building things that matter — from multi-agent flood response systems to smart IoT monitors. When I'm not coding, you'll find me playing chess online. ♟️",
+  lookingFor: "Currently open to Junior Software Engineer roles and research collaborations in AI/ML.",
   email: "jobayerfaisal.fahim@gmail.com",
   phone: "+880 1862-552057",
   github: "https://github.com/JobayerFaisal",
   linkedin: "https://linkedin.com/in/jobayer-faisal-fahim",
   location: "Dhaka, Bangladesh",
+  education: [
+    {
+      degree: "B.Sc. in Computer Science & Engineering",
+      institution: "East West University",
+      location: "Dhaka, Bangladesh",
+      period: "2022 – 2026",
+      gpa: "CGPA: 3.80 / 4.00",
+      details: ["Data Structures & Algorithms", "Database Management Systems", "Software Engineering", "Object-Oriented Programming", "Computer Networks", "Operating Systems"],
+      current: true,
+    },
+    {
+      degree: "Higher Secondary Certificate (H.S.C)",
+      institution: "Willes Little Flower School & College",
+      location: "Dhaka, Bangladesh",
+      period: "2020",
+      gpa: "GPA: 4.75 / 5.00",
+      details: [],
+      current: false,
+    },
+    {
+      degree: "Secondary School Certificate (S.S.C)",
+      institution: "Kodalpur Secondary School",
+      location: "Gosairhat, Shariatpur",
+      period: "2018",
+      gpa: "GPA: 4.67 / 5.00",
+      details: [],
+      current: false,
+    },
+  ],
   skills: [
     { category: "Languages", items: ["Python", "C", "C++", "Java", "JavaScript"] },
     { category: "Libraries", items: ["Pandas", "NumPy", "FastAPI", "Flask"] },
@@ -24,6 +54,7 @@ const data = {
       desc: "A four-agent AI system that autonomously chains real-time flood detection, community distress identification, resource allocation, and safe route dispatch — without human coordination at handoff points.",
       tags: ["Python", "Redis Pub/Sub", "MongoDB", "NLP", "Google Earth Engine"],
       link: "https://github.com/JobayerFaisal/Emergency_Response_System",
+      linkLabel: "View on GitHub →",
       highlight: true,
     },
     {
@@ -32,6 +63,7 @@ const data = {
       desc: "A web platform on Oracle APEX connecting blood recipients with nearby donors via blood type and location-based search with real-time notifications.",
       tags: ["Oracle APEX", "SQL", "PL/SQL"],
       link: "https://github.com/JobayerFaisal/Blood_Donation_Apex_Oracle",
+      linkLabel: "View on GitHub →",
       highlight: false,
     },
     {
@@ -40,6 +72,7 @@ const data = {
       desc: "A modular Python system integrating Tuya smart power devices to collect real-time energy readings, analyze usage patterns, and estimate electricity billing.",
       tags: ["Python", "Tuya IoT API", "MongoDB", "Data Analysis"],
       link: "https://github.com/JobayerFaisal",
+      linkLabel: "Coming Soon on GitHub",
       highlight: false,
     },
     {
@@ -48,6 +81,7 @@ const data = {
       desc: "A Java-based chat application supporting individual client messaging with snippet features, built on socket programming principles.",
       tags: ["Java", "Sockets", "Networking"],
       link: "https://github.com/JobayerFaisal/ChatApplication_java",
+      linkLabel: "View on GitHub →",
       highlight: false,
     },
   ],
@@ -81,7 +115,7 @@ const data = {
   ],
 };
 
-const NAV = ["About", "Skills", "Projects", "Publications", "Awards", "Contact"];
+const NAV = ["About", "Education", "Skills", "Projects", "Publications", "Awards", "Contact"];
 
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
@@ -277,9 +311,27 @@ export default function Portfolio() {
           <h1 style={styles.heroName}>{data.name}</h1>
           <p style={styles.heroRole}>{data.role}</p>
           <p style={styles.heroBio}>{data.bio}</p>
+          <p style={{
+            fontFamily: "'Helvetica Neue', sans-serif", fontSize: 14,
+            color: "#7c4a1e", background: "#fff3e8", border: "1px solid #f5c08a",
+            borderRadius: 4, padding: "10px 16px", display: "inline-block",
+            marginBottom: "2rem", letterSpacing: "0.02em",
+          }}>
+            🔍 {data.lookingFor}
+          </p>
           <div style={styles.heroBtns}>
             <button style={styles.btnPrimary} onClick={() => scrollTo("Projects")}>View Projects</button>
             <button style={styles.btnOutline} onClick={() => scrollTo("Contact")}>Get in Touch</button>
+            <a href="/Jobayer_Faisal/Jobayer_Faisal.pdf"
+              download="Jobayer_Faisal_CV.pdf"
+              style={{
+                ...styles.btnOutline,
+                display: "inline-flex", alignItems: "center", gap: "0.4rem",
+                textDecoration: "none", color: "#7c4a1e",
+              }}
+            >
+              ⬇ Download CV
+            </a>
           </div>
           <div style={{ marginTop: "3rem", display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
             {[
@@ -296,6 +348,57 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
+
+      {/* EDUCATION */}
+      <Section id="Education" style={{ background: "#fdf8f3" }}>
+        <div style={styles.container}>
+          <p style={styles.sectionLabel}>Academic Background</p>
+          <h2 style={styles.sectionTitle}>Education</h2>
+          <div style={{ position: "relative" }}>
+            {/* Timeline line */}
+            <div style={{ position: "absolute", left: 16, top: 8, bottom: 8, width: 2, background: "#e8dfd0" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              {data.education.map((edu, i) => (
+                <div key={i} style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+                  {/* Dot */}
+                  <div style={{ flexShrink: 0, width: 34, display: "flex", justifyContent: "center", paddingTop: 4 }}>
+                    <div style={{
+                      width: 14, height: 14, borderRadius: "50%",
+                      background: edu.current ? "#c4813a" : "#e8dfd0",
+                      border: `3px solid ${edu.current ? "#7c4a1e" : "#c4813a"}`,
+                      zIndex: 1,
+                    }} />
+                  </div>
+                  {/* Card */}
+                  <div style={{ ...styles.card, flex: 1, borderLeft: edu.current ? "3px solid #c4813a" : "1px solid #e8dfd0" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.4rem" }}>
+                      <div>
+                        <h3 style={{ fontFamily: "'Georgia', serif", fontSize: 17, color: "#1a1410", margin: 0, marginBottom: 2 }}>{edu.degree}</h3>
+                        <p style={{ fontFamily: "'Helvetica Neue', sans-serif", fontSize: 14, color: "#7c4a1e", margin: 0, fontWeight: 500 }}>{edu.institution}</p>
+                        <p style={{ fontFamily: "'Helvetica Neue', sans-serif", fontSize: 12, color: "#9c6b38", margin: 0 }}>{edu.location}</p>
+                      </div>
+                      <div style={{ textAlign: "right" }}>
+                        <span style={{ fontFamily: "'Helvetica Neue', sans-serif", fontSize: 12, color: "#9c6b38", fontStyle: "italic" }}>{edu.period}</span>
+                        <p style={{ fontFamily: "'Helvetica Neue', sans-serif", fontSize: 13, fontWeight: 600, color: "#2d6a4f", margin: "4px 0 0", background: "#e6f4ea", padding: "2px 8px", borderRadius: 3, display: "inline-block" }}>{edu.gpa}</p>
+                      </div>
+                    </div>
+                    {edu.details.length > 0 && (
+                      <div style={{ marginTop: "0.8rem" }}>
+                        <p style={{ fontFamily: "'Helvetica Neue', sans-serif", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9c6b38", marginBottom: "0.5rem", fontWeight: 600 }}>Relevant Coursework</p>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+                          {edu.details.map(d => (
+                            <span key={d} style={{ fontSize: 12, padding: "3px 10px", background: "#fdf0e0", color: "#7c4a1e", borderRadius: 3, fontFamily: "'Helvetica Neue', sans-serif" }}>{d}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* SKILLS */}
       <Section id="Skills" style={{ background: "#fdf8f3" }}>
@@ -342,7 +445,7 @@ export default function Portfolio() {
                   {p.tags.map(t => <Tag key={t} label={t} />)}
                 </div>
                 <a href={p.link} target="_blank" rel="noreferrer" style={{ fontFamily: "'Helvetica Neue', sans-serif", fontSize: 13, color: "#7c4a1e", textDecoration: "none", letterSpacing: "0.04em", marginTop: "auto" }}>
-                  View on GitHub →
+                  {p.linkLabel || "View on GitHub →"}
                 </a>
               </div>
             ))}
@@ -404,11 +507,13 @@ export default function Portfolio() {
             I'm open to full-time opportunities, research collaborations, and interesting projects. Feel free to reach out!
           </p>
           <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginBottom: "3rem" }}>
-            {[
-              { icon: "✉", label: data.email, href: `mailto:${data.email}` },
-              { icon: "📞", label: data.phone, href: `tel:${data.phone}` },
-              { icon: "🐙", label: "GitHub", href: data.github },
-              { icon: "💼", label: "LinkedIn", href: data.linkedin },
+          {[
+            { icon: "✉", label: data.email, href: `mailto:${data.email}` },
+            { icon: "📞", label: data.phone, href: `tel:${data.phone}` },
+            { icon: "🐙", label: "GitHub", href: data.github },
+            { icon: "💼", label: "LinkedIn", href: data.linkedin },
+            { icon: "⬇", label: "Download CV", href: "/Jobayer_Faisal/Jobayer_Faisal.pdf", download: "Jobayer_Faisal_CV.pdf" },
+
             ].map(c => (
               <a key={c.label} href={c.href} target="_blank" rel="noreferrer" style={{
                 display: "flex", alignItems: "center", gap: "0.5rem",
